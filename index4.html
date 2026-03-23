@@ -1,0 +1,3035 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kartal Mobilya – Handcrafted Wood Furniture Istanbul</title>
+    <meta
+      name="description"
+      content="Handcrafted wooden furniture and carpentry services in Istanbul. Custom kitchen cabinets, wardrobes, dining tables, and more. 15+ years of experience."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f5f0e8;
+        --warm-white: #faf7f2;
+        --oak: #8b6914;
+        --dark-oak: #5c4209;
+        --charcoal: #1c1916;
+        --mid: #4a3f35;
+        --light-wood: #c8a96e;
+        --grain: #e8dfd0;
+        --gold: #b8922a;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Jost", sans-serif;
+        background: var(--warm-white);
+        color: var(--charcoal);
+        overflow-x: hidden;
+        cursor: none;
+      }
+
+      /* Custom cursor */
+      .cursor {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: var(--oak);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.15s ease;
+        transform: translate(-50%, -50%);
+      }
+      .cursor-ring {
+        position: fixed;
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--light-wood);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transition:
+          transform 0.4s ease,
+          width 0.3s,
+          height 0.3s,
+          opacity 0.3s;
+        transform: translate(-50%, -50%);
+      }
+      .cursor-ring.hovered {
+        width: 54px;
+        height: 54px;
+        opacity: 0.5;
+      }
+
+      /* ===== INTRO ANIMATION ===== */
+      #intro {
+        position: fixed;
+        inset: 0;
+        background: var(--charcoal);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+      }
+      #intro.done {
+        animation: introDone 0.8s ease forwards;
+      }
+      @keyframes introDone {
+        to {
+          opacity: 0;
+          pointer-events: none;
+          transform: scale(1.04);
+        }
+      }
+
+      .intro-canvas {
+        position: absolute;
+        inset: 0;
+        opacity: 0.12;
+      }
+
+      .intro-brand {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(3rem, 8vw, 6.5rem);
+        font-weight: 300;
+        color: var(--cream);
+        letter-spacing: 0.15em;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 1.2s 0.4s ease forwards;
+        text-align: center;
+        line-height: 1;
+      }
+      .intro-sub {
+        font-family: "Jost", sans-serif;
+        font-weight: 200;
+        font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+        letter-spacing: 0.45em;
+        color: var(--light-wood);
+        text-transform: uppercase;
+        opacity: 0;
+        animation: fadeUp 1.2s 0.8s ease forwards;
+      }
+
+      .intro-line {
+        width: 0;
+        height: 1px;
+        background: var(--light-wood);
+        animation: expandLine 1.2s 1.2s ease forwards;
+        opacity: 0.6;
+      }
+      @keyframes expandLine {
+        to {
+          width: min(260px, 40vw);
+        }
+      }
+
+      .intro-progress {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.12);
+        overflow: hidden;
+      }
+      .intro-progress-bar {
+        height: 100%;
+        background: var(--light-wood);
+        animation: progressFill 2.2s 0.5s ease forwards;
+        width: 0;
+      }
+      @keyframes progressFill {
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== NAVBAR ===== */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 500;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 clamp(20px, 5vw, 60px);
+        height: 72px;
+        transition:
+          background 0.4s,
+          box-shadow 0.4s;
+      }
+      nav.scrolled {
+        background: rgba(250, 247, 242, 0.96);
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+        backdrop-filter: blur(8px);
+      }
+
+      .nav-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--charcoal);
+        letter-spacing: 0.06em;
+        text-decoration: none;
+      }
+      .nav-logo span {
+        color: var(--oak);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 36px;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--mid);
+        font-weight: 400;
+        position: relative;
+        transition: color 0.3s;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--oak);
+        transition: width 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--oak);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Language selector */
+      .lang-selector {
+        position: relative;
+      }
+      .lang-btn {
+        background: none;
+        border: 1px solid rgba(139, 105, 20, 0.35);
+        color: var(--mid);
+        font-family: "Jost", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 6px 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s;
+        border-radius: 2px;
+      }
+      .lang-btn:hover {
+        background: var(--oak);
+        color: white;
+        border-color: var(--oak);
+      }
+      .lang-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        background: var(--warm-white);
+        border: 1px solid var(--grain);
+        min-width: 100px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        display: none;
+        flex-direction: column;
+        z-index: 600;
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .lang-dropdown.open {
+        display: flex;
+      }
+      .lang-dropdown button {
+        background: none;
+        border: none;
+        padding: 10px 16px;
+        text-align: left;
+        font-family: "Jost", sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        color: var(--mid);
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .lang-dropdown button:hover {
+        background: var(--grain);
+        color: var(--oak);
+      }
+      .lang-dropdown button.active {
+        color: var(--oak);
+        font-weight: 500;
+      }
+
+      /* Hamburger */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+        background: none;
+        border: none;
+      }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 1px;
+        background: var(--charcoal);
+        transition: all 0.3s;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--warm-white);
+        padding: 24px clamp(20px, 5vw, 60px) 32px;
+        flex-direction: column;
+        gap: 20px;
+        border-bottom: 1px solid var(--grain);
+        z-index: 490;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        font-size: 0.85rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--mid);
+        font-weight: 400;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--grain);
+      }
+      .mobile-menu-langs {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 4px;
+      }
+      .mobile-menu-langs button {
+        background: none;
+        border: 1px solid var(--grain);
+        padding: 6px 14px;
+        font-family: "Jost", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.15em;
+        cursor: pointer;
+        color: var(--mid);
+        border-radius: 2px;
+        transition: all 0.2s;
+      }
+      .mobile-menu-langs button.active,
+      .mobile-menu-langs button:hover {
+        background: var(--oak);
+        color: white;
+        border-color: var(--oak);
+      }
+
+      /* ===== HERO ===== */
+      #hero {
+        min-height: 100svh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        position: relative;
+        overflow: hidden;
+        background: var(--cream);
+      }
+
+      .hero-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(100px, 12vw, 160px) clamp(24px, 6vw, 80px)
+          clamp(60px, 8vw, 100px);
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.38em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 400;
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        opacity: 0;
+        animation: fadeUp 0.8s 3s ease forwards;
+      }
+      .hero-label::before {
+        content: "";
+        display: block;
+        width: 32px;
+        height: 1px;
+        background: var(--gold);
+        opacity: 0.7;
+      }
+
+      .hero-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.8rem, 5.5vw, 5rem);
+        font-weight: 300;
+        line-height: 1.1;
+        color: var(--charcoal);
+        margin-bottom: 28px;
+        opacity: 0;
+        animation: fadeUp 0.9s 3.1s ease forwards;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: var(--oak);
+      }
+
+      .hero-desc {
+        font-size: 0.92rem;
+        font-weight: 300;
+        color: var(--mid);
+        line-height: 1.85;
+        max-width: 400px;
+        margin-bottom: 44px;
+        opacity: 0;
+        animation: fadeUp 0.9s 3.2s ease forwards;
+      }
+
+      .hero-ctas {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        opacity: 0;
+        animation: fadeUp 0.9s 3.3s ease forwards;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--charcoal);
+        color: var(--cream);
+        text-decoration: none;
+        font-size: 0.72rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        padding: 16px 28px;
+        font-weight: 400;
+        transition: all 0.3s;
+        border: 1px solid var(--charcoal);
+      }
+      .btn-primary:hover {
+        background: var(--oak);
+        border-color: var(--oak);
+        transform: translateY(-2px);
+      }
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: transparent;
+        color: var(--charcoal);
+        text-decoration: none;
+        font-size: 0.72rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        padding: 16px 28px;
+        font-weight: 400;
+        transition: all 0.3s;
+        border: 1px solid rgba(28, 25, 22, 0.25);
+      }
+      .btn-secondary:hover {
+        border-color: var(--oak);
+        color: var(--oak);
+        transform: translateY(-2px);
+      }
+
+      .btn-whatsapp {
+        background: #25d366;
+        border-color: #25d366;
+        color: white;
+      }
+      .btn-whatsapp:hover {
+        background: #1ebe5d;
+        border-color: #1ebe5d;
+      }
+
+      /* WhatsApp fixed floating button */
+      .wa-float {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 800;
+        width: 58px;
+        height: 58px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        text-decoration: none;
+        animation: waPulse 2.5s 4s ease infinite;
+        transition: transform 0.3s;
+      }
+      .wa-float:hover {
+        transform: scale(1.1);
+      }
+      @keyframes waPulse {
+        0%,
+        100% {
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        }
+        50% {
+          box-shadow: 0 4px 34px rgba(37, 211, 102, 0.65);
+        }
+      }
+      .wa-float svg {
+        width: 28px;
+        height: 28px;
+        fill: white;
+      }
+
+      .hero-right {
+        position: relative;
+        overflow: hidden;
+        background: var(--charcoal);
+      }
+
+      .hero-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .hero-overlay-text {
+        position: absolute;
+        bottom: clamp(24px, 5vw, 48px);
+        left: clamp(24px, 5vw, 48px);
+        right: 24px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+        font-weight: 300;
+        font-style: italic;
+        color: rgba(245, 240, 232, 0.6);
+        line-height: 1.6;
+        z-index: 2;
+        opacity: 0;
+        animation: fadeUp 0.9s 3.4s ease forwards;
+      }
+
+      .hero-badges {
+        position: absolute;
+        top: clamp(90px, 10vw, 110px);
+        right: clamp(16px, 3vw, 32px);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 3;
+        opacity: 0;
+        animation: fadeUp 0.9s 3.5s ease forwards;
+      }
+      .badge {
+        background: rgba(245, 240, 232, 0.1);
+        border: 1px solid rgba(245, 240, 232, 0.15);
+        padding: 8px 14px;
+        font-size: 0.62rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--light-wood);
+        backdrop-filter: blur(4px);
+        white-space: nowrap;
+      }
+
+      /* ===== SECTIONS ===== */
+      section {
+        padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 80px);
+      }
+
+      .section-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .section-label::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 1px;
+        background: var(--gold);
+      }
+
+      .section-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        font-weight: 300;
+        line-height: 1.2;
+        color: var(--charcoal);
+        margin-bottom: 20px;
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--oak);
+      }
+
+      /* ===== ABOUT ===== */
+      #about {
+        background: var(--charcoal);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(40px, 6vw, 80px);
+        align-items: center;
+      }
+      #about .section-title {
+        color: var(--cream);
+      }
+      #about .section-label {
+        color: var(--light-wood);
+      }
+      #about .section-label::before {
+        background: var(--light-wood);
+      }
+
+      .about-desc {
+        font-size: 0.95rem;
+        font-weight: 300;
+        color: rgba(245, 240, 232, 0.7);
+        line-height: 1.9;
+        margin-bottom: 40px;
+      }
+
+      .about-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .stat-item {
+        border-top: 1px solid rgba(245, 240, 232, 0.15);
+        padding-top: 20px;
+      }
+      .stat-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 300;
+        color: var(--light-wood);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .stat-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(245, 240, 232, 0.45);
+      }
+
+      .about-visual {
+        position: relative;
+      }
+      .about-canvas {
+        width: 100%;
+        aspect-ratio: 4/5;
+        display: block;
+        border-radius: 2px;
+      }
+
+      /* ===== SERVICES ===== */
+      #services {
+        background: var(--warm-white);
+      }
+      .services-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 56px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        background: var(--grain);
+      }
+
+      .service-card {
+        background: var(--warm-white);
+        padding: clamp(28px, 4vw, 44px) clamp(24px, 3vw, 36px);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: background 0.4s;
+      }
+      .service-card::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--oak);
+        transition: width 0.4s ease;
+      }
+      .service-card:hover {
+        background: var(--cream);
+      }
+      .service-card:hover::before {
+        width: 100%;
+      }
+
+      .service-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 24px;
+        opacity: 0.7;
+      }
+      .service-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .service-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.35rem;
+        font-weight: 400;
+        color: var(--charcoal);
+        margin-bottom: 12px;
+      }
+      .service-desc {
+        font-size: 0.82rem;
+        font-weight: 300;
+        color: var(--mid);
+        line-height: 1.75;
+      }
+
+      .service-num {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 3rem;
+        font-weight: 300;
+        color: var(--grain);
+        line-height: 1;
+        user-select: none;
+        transition: color 0.4s;
+      }
+      .service-card:hover .service-num {
+        color: rgba(139, 105, 20, 0.12);
+      }
+
+      /* ===== FEATURES ===== */
+      #features {
+        background: var(--cream);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(40px, 6vw, 80px);
+        align-items: center;
+      }
+
+      .features-list {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        margin-top: 40px;
+      }
+      .feature-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        padding-bottom: 28px;
+        border-bottom: 1px solid var(--grain);
+      }
+      .feature-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .feature-icon {
+        width: 44px;
+        height: 44px;
+        background: var(--charcoal);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .feature-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--cream);
+        fill: none;
+        stroke-width: 1.5;
+      }
+      .feature-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.15rem;
+        font-weight: 500;
+        color: var(--charcoal);
+        margin-bottom: 6px;
+      }
+      .feature-text {
+        font-size: 0.82rem;
+        font-weight: 300;
+        color: var(--mid);
+        line-height: 1.75;
+      }
+
+      .features-visual {
+        position: relative;
+      }
+      .features-canvas {
+        width: 100%;
+        aspect-ratio: 3/4;
+        display: block;
+        border-radius: 2px;
+      }
+
+      /* ===== CUSTOM WORKSHOP ===== */
+      #workshop {
+        background: var(--cream);
+        padding: clamp(60px, 9vw, 110px) clamp(20px, 5vw, 80px);
+      }
+      .workshop-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(40px, 7vw, 100px);
+        align-items: start;
+      }
+      .workshop-tagline {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.9rem, 3.5vw, 3rem);
+        font-weight: 300;
+        color: var(--charcoal);
+        line-height: 1.18;
+        margin-bottom: 22px;
+      }
+      .workshop-tagline em {
+        font-style: italic;
+        color: var(--oak);
+      }
+      .workshop-body {
+        font-size: 0.91rem;
+        font-weight: 300;
+        color: var(--mid);
+        line-height: 1.9;
+        margin-bottom: 36px;
+        max-width: 480px;
+      }
+      .workshop-materials {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 36px;
+      }
+      .mat-tag {
+        border: 1px solid rgba(139, 105, 20, 0.3);
+        padding: 7px 16px;
+        font-size: 0.68rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--oak);
+        border-radius: 2px;
+        background: rgba(139, 105, 20, 0.04);
+        font-weight: 400;
+      }
+      .workshop-right {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .workshop-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--grain);
+        cursor: default;
+        transition: padding-left 0.3s ease;
+      }
+      .workshop-item:first-child {
+        border-top: 1px solid var(--grain);
+      }
+      .workshop-item:hover {
+        padding-left: 8px;
+      }
+      .workshop-item-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--light-wood);
+        flex-shrink: 0;
+        margin-top: 6px;
+        transition:
+          background 0.3s,
+          transform 0.3s;
+      }
+      .workshop-item:hover .workshop-item-dot {
+        background: var(--oak);
+        transform: scale(1.3);
+      }
+      .workshop-item-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--charcoal);
+        margin-bottom: 5px;
+        line-height: 1.2;
+      }
+      .workshop-item-desc {
+        font-size: 0.8rem;
+        font-weight: 300;
+        color: var(--mid);
+        line-height: 1.7;
+      }
+      .workshop-cta {
+        margin-top: 28px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.72rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--charcoal);
+        text-decoration: none;
+        border-bottom: 1px solid var(--charcoal);
+        padding-bottom: 3px;
+        transition:
+          color 0.3s,
+          border-color 0.3s;
+        font-weight: 400;
+      }
+      .workshop-cta:hover {
+        color: var(--oak);
+        border-color: var(--oak);
+      }
+
+      /* Marquee strip */
+      .marquee-strip {
+        background: var(--charcoal);
+        overflow: hidden;
+        padding: 16px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marqueeScroll 22s linear infinite;
+      }
+      .marquee-track:hover {
+        animation-play-state: paused;
+      }
+      @keyframes marqueeScroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .marquee-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 0 28px;
+        white-space: nowrap;
+        font-size: 0.68rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: rgba(200, 169, 110, 0.55);
+        font-weight: 400;
+      }
+      .marquee-dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--gold);
+        opacity: 0.5;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 760px) {
+        .workshop-inner {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ===== PRICING NOTE ===== */
+      .pricing-note {
+        background: var(--charcoal);
+        padding: clamp(36px, 5vw, 56px) clamp(20px, 5vw, 80px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+      .pricing-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+        font-weight: 300;
+        color: var(--cream);
+      }
+      .pricing-text em {
+        color: var(--light-wood);
+        font-style: italic;
+      }
+      .pricing-currencies {
+        display: flex;
+        gap: 12px;
+      }
+      .currency-tag {
+        border: 1px solid rgba(245, 240, 232, 0.2);
+        padding: 10px 20px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.2rem;
+        color: var(--light-wood);
+        letter-spacing: 0.05em;
+      }
+
+      /* ===== CONTACT ===== */
+      #contact {
+        background: var(--warm-white);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(40px, 6vw, 80px);
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .contact-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--grain);
+      }
+      .contact-item:last-of-type {
+        border-bottom: none;
+      }
+      .contact-icon {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--grain);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .contact-icon svg {
+        width: 16px;
+        height: 16px;
+        stroke: var(--oak);
+        fill: none;
+        stroke-width: 1.5;
+      }
+      .contact-item-title {
+        font-size: 0.65rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 6px;
+      }
+      .contact-item-value {
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: var(--charcoal);
+        line-height: 1.7;
+      }
+      .contact-item-value a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .contact-item-value a:hover {
+        color: var(--oak);
+      }
+
+      .cta-wa {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: #25d366;
+        color: white;
+        text-decoration: none;
+        font-size: 0.75rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 18px 32px;
+        margin-top: 32px;
+        font-weight: 400;
+        transition: all 0.3s;
+        border: none;
+        align-self: flex-start;
+      }
+      .cta-wa:hover {
+        background: #1ebe5d;
+        transform: translateY(-2px);
+      }
+      .cta-wa svg {
+        width: 18px;
+        height: 18px;
+        fill: white;
+      }
+
+      .map-container {
+        border-radius: 2px;
+        overflow: hidden;
+        position: relative;
+      }
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 380px;
+        border: none;
+        display: block;
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: var(--charcoal);
+        padding: clamp(32px, 5vw, 56px) clamp(20px, 5vw, 80px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .footer-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        font-weight: 300;
+        color: var(--cream);
+        letter-spacing: 0.08em;
+      }
+      .footer-logo span {
+        color: var(--light-wood);
+      }
+      .footer-copy {
+        font-size: 0.7rem;
+        font-weight: 300;
+        letter-spacing: 0.1em;
+        color: rgba(245, 240, 232, 0.35);
+      }
+      .footer-links {
+        display: flex;
+        gap: 24px;
+      }
+      .footer-links a {
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(245, 240, 232, 0.4);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .footer-links a:hover {
+        color: var(--light-wood);
+      }
+
+      /* ===== SCROLL REVEAL ===== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 900px) {
+        #hero {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+        .hero-right {
+          height: 50svh;
+        }
+        .hero-badges {
+          top: 16px;
+        }
+
+        #about {
+          grid-template-columns: 1fr;
+        }
+        .about-visual {
+          order: -1;
+        }
+        .about-canvas {
+          aspect-ratio: 16/9;
+        }
+
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        #features {
+          grid-template-columns: 1fr;
+        }
+        .features-visual {
+          order: -1;
+        }
+        .features-canvas {
+          aspect-ratio: 16/9;
+        }
+
+        #contact {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+        .lang-selector {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+
+        body {
+          cursor: auto;
+        }
+        .cursor,
+        .cursor-ring {
+          display: none;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .pricing-note {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .hero-ctas {
+          flex-direction: column;
+        }
+        .btn-primary,
+        .btn-secondary {
+          text-align: center;
+          justify-content: center;
+        }
+      }
+
+      /* Hide/show i18n */
+      [data-lang] {
+        display: none;
+      }
+      [data-lang].active {
+        display: block;
+      }
+      span[data-lang].active {
+        display: inline;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Custom cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- WhatsApp Float -->
+    <a
+      href="https://wa.me/905315108948"
+      class="wa-float"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </svg>
+    </a>
+
+    <!-- ===== INTRO ANIMATION ===== -->
+    <div id="intro">
+      <canvas class="intro-canvas" id="introCanvas"></canvas>
+      <div class="intro-brand" id="introBrand">Kartal Mobilya</div>
+      <div class="intro-line" id="introLine"></div>
+      <div class="intro-sub" id="introSub">Handcrafted Wood · Istanbul</div>
+      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav id="navbar">
+      <a href="#" class="nav-logo">Kartal <span>Mobilya</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#services" data-i18n="nav_services">Services</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+        <li>
+          <a
+            href="https://wa.me/905315108948"
+            target="_blank"
+            style="
+              color: #25d366;
+              border: 1px solid rgba(37, 211, 102, 0.4);
+              padding: 6px 14px;
+              border-radius: 2px;
+              letter-spacing: 0.15em;
+              font-size: 0.68rem;
+              transition: all 0.3s;
+            "
+            data-i18n="nav_whatsapp"
+            >WhatsApp</a
+          >
+        </li>
+      </ul>
+
+      <div class="lang-selector">
+        <button class="lang-btn" id="langBtn">
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path
+              d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+            />
+          </svg>
+          <span id="currentLang">EN</span>
+          <svg
+            width="8"
+            height="8"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button onclick="setLang('en')" class="active" data-l="en">
+            English
+          </button>
+          <button onclick="setLang('tr')" data-l="tr">Türkçe</button>
+          <button onclick="setLang('ar')" data-l="ar">العربية</button>
+          <button onclick="setLang('ru')" data-l="ru">Русский</button>
+        </div>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about" onclick="closeMobile()" data-i18n="nav_about">About</a>
+      <a href="#services" onclick="closeMobile()" data-i18n="nav_services"
+        >Services</a
+      >
+      <a href="#contact" onclick="closeMobile()" data-i18n="nav_contact"
+        >Contact</a
+      >
+      <a
+        href="https://wa.me/905315108948"
+        target="_blank"
+        style="color: #25d366"
+        data-i18n="nav_whatsapp"
+        >WhatsApp</a
+      >
+      <div class="mobile-menu-langs">
+        <button
+          onclick="
+            setLang('en');
+            closeMobile();
+          "
+          data-ml="en"
+          class="active"
+        >
+          EN
+        </button>
+        <button
+          onclick="
+            setLang('tr');
+            closeMobile();
+          "
+          data-ml="tr"
+        >
+          TR
+        </button>
+        <button
+          onclick="
+            setLang('ar');
+            closeMobile();
+          "
+          data-ml="ar"
+        >
+          AR
+        </button>
+        <button
+          onclick="
+            setLang('ru');
+            closeMobile();
+          "
+          data-ml="ru"
+        >
+          RU
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+      <div class="hero-left">
+        <div class="hero-label" data-i18n="hero_label">
+          Est. 2009 · Istanbul
+        </div>
+        <h1 class="hero-title">
+          <span data-i18n="hero_title1">Handcrafted with</span><br />
+          <em data-i18n="hero_title2">Passion &amp; Precision</em>
+        </h1>
+        <p class="hero-desc" data-i18n="hero_desc">
+          Over 15 years of bespoke wooden furniture and carpentry in Istanbul.
+          Every project is a signature, every client becomes family.
+        </p>
+        <div class="hero-ctas">
+          <a
+            href="https://wa.me/905315108948"
+            class="btn-primary btn-whatsapp"
+            target="_blank"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              />
+            </svg>
+            <span data-i18n="cta_whatsapp">Write on WhatsApp</span>
+          </a>
+          <a href="#contact" class="btn-secondary" data-i18n="cta_contact"
+            >Contact Us</a
+          >
+        </div>
+      </div>
+      <div class="hero-right">
+        <canvas class="hero-canvas" id="heroCanvas"></canvas>
+        <div class="hero-badges">
+          <div class="badge" data-i18n="badge1">Free Installation</div>
+          <div class="badge" data-i18n="badge2">2+ Year Warranty</div>
+          <div class="badge" data-i18n="badge3">Custom Design</div>
+        </div>
+        <p class="hero-overlay-text" data-i18n="hero_quote">
+          "Every piece of wood has a story — we help it tell yours."
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="reveal">
+        <div class="section-label" data-i18n="about_label">Our Story</div>
+        <h2 class="section-title">
+          <span data-i18n="about_title1">15+ Years of</span><br />
+          <em data-i18n="about_title2">Masterful Craft</em>
+        </h2>
+        <p class="about-desc" data-i18n="about_desc">
+          Based in Kartal, Istanbul, we have been crafting handmade wooden
+          furniture and delivering carpentry services for over 15 years. Each
+          piece is built with care, experience, and respect for the natural
+          beauty of wood. We serve clients across Istanbul and beyond — with a
+          passion for quality that travels with every item we create.
+        </p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-num">15+</div>
+            <div class="stat-label" data-i18n="stat1">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">500+</div>
+            <div class="stat-label" data-i18n="stat2">Projects Done</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">2yr</div>
+            <div class="stat-label" data-i18n="stat3">Guarantee</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <canvas class="about-canvas" id="aboutCanvas"></canvas>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services">
+      <div class="services-header reveal">
+        <div>
+          <div class="section-label" data-i18n="services_label">
+            What We Create
+          </div>
+          <h2 class="section-title">
+            <span data-i18n="services_title1">Our</span>
+            <em data-i18n="services_title2">Services</em>
+          </h2>
+        </div>
+        <a
+          href="https://wa.me/905315108948"
+          class="btn-secondary"
+          target="_blank"
+          data-i18n="services_cta"
+          >Get a Quote →</a
+        >
+      </div>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <span class="service-num">01</span>
+          <div class="service-icon">
+            <svg
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="4"
+                y="8"
+                width="32"
+                height="28"
+                rx="1"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="4"
+                y1="16"
+                x2="36"
+                y2="16"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="20"
+                y1="16"
+                x2="20"
+                y2="36"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <rect
+                x="8"
+                y="4"
+                width="24"
+                height="4"
+                rx="1"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+          <div class="service-name" data-i18n="svc1_name">Kitchen Cabinet</div>
+          <div class="service-desc" data-i18n="svc1_desc">
+            Custom-built kitchen cabinets designed to maximise your space and
+            match your aesthetic perfectly.
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">02</span>
+          <div class="service-icon">
+            <svg
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="6"
+                y="4"
+                width="28"
+                height="34"
+                rx="1"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="6"
+                y1="20"
+                x2="34"
+                y2="20"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="20"
+                y1="4"
+                x2="20"
+                y2="38"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <circle cx="18" cy="12" r="1.5" fill="#8B6914" />
+              <circle cx="22" cy="28" r="1.5" fill="#8B6914" />
+            </svg>
+          </div>
+          <div class="service-name" data-i18n="svc2_name">Wardrobe</div>
+          <div class="service-desc" data-i18n="svc2_desc">
+            Bespoke wardrobes and storage solutions crafted to fit any room
+            size, style, and personal need.
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">03</span>
+          <div class="service-icon">
+            <svg
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 28 L8 14 Q20 8 32 14 L32 28"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="4"
+                y1="28"
+                x2="36"
+                y2="28"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="12"
+                y1="28"
+                x2="12"
+                y2="36"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="28"
+                y1="28"
+                x2="28"
+                y2="36"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+          <div class="service-name" data-i18n="svc3_name">Custom Furniture</div>
+          <div class="service-desc" data-i18n="svc3_desc">
+            From concept to creation — bespoke furniture pieces designed
+            exclusively for your space and taste.
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">04</span>
+          <div class="service-icon">
+            <svg
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="6"
+                y="16"
+                width="28"
+                height="12"
+                rx="1"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="6"
+                y1="16"
+                x2="34"
+                y2="16"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="10"
+                y1="28"
+                x2="10"
+                y2="36"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="30"
+                y1="28"
+                x2="30"
+                y2="36"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="4"
+                y1="36"
+                x2="36"
+                y2="36"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+          <div class="service-name" data-i18n="svc4_name">Dining Table</div>
+          <div class="service-desc" data-i18n="svc4_desc">
+            Solid wood dining tables crafted for longevity, beauty, and the
+            warmth of family gatherings.
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">05</span>
+          <div class="service-icon">
+            <svg
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="10"
+                y="14"
+                width="20"
+                height="14"
+                rx="2"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="16"
+                y1="28"
+                x2="16"
+                y2="36"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="24"
+                y1="28"
+                x2="24"
+                y2="36"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="12"
+                y1="36"
+                x2="28"
+                y2="36"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <circle
+                cx="20"
+                cy="10"
+                r="4"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+          <div class="service-name" data-i18n="svc5_name">Coffee Table</div>
+          <div class="service-desc" data-i18n="svc5_desc">
+            Elegant coffee and side tables — the centrepiece of your living
+            room, made to impress.
+          </div>
+        </div>
+        <div class="service-card">
+          <span class="service-num">06</span>
+          <div class="service-icon">
+            <svg
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="20"
+                cy="20"
+                r="13"
+                stroke="#8B6914"
+                stroke-width="1.5"
+                stroke-dasharray="3 2"
+              />
+              <path
+                d="M14 20 Q17 14 20 20 Q23 26 26 20"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+              <line
+                x1="20"
+                y1="8"
+                x2="22"
+                y2="6"
+                stroke="#8B6914"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+          <div class="service-name" data-i18n="svc6_name">
+            Renovation &amp; Repair
+          </div>
+          <div class="service-desc" data-i18n="svc6_desc">
+            Breathe new life into your existing furniture — expert restoration
+            and renovation with original craftsmanship.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MARQUEE STRIP ===== -->
+    <div class="marquee-strip">
+      <div class="marquee-track" id="marqueeTrack">
+        <span class="marquee-item">MDF <span class="marquee-dot"></span></span>
+        <span class="marquee-item"
+          >Solid Wood <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Chipboard <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Laminate <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Living Room <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Bedroom <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Bathroom <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Office <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Any Design <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Any Space <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Custom Order <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item">MDF <span class="marquee-dot"></span></span>
+        <span class="marquee-item"
+          >Solid Wood <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Chipboard <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Laminate <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Living Room <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Bedroom <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Bathroom <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Office <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Any Design <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Any Space <span class="marquee-dot"></span
+        ></span>
+        <span class="marquee-item"
+          >Custom Order <span class="marquee-dot"></span
+        ></span>
+      </div>
+    </div>
+
+    <!-- ===== CUSTOM WORKSHOP ===== -->
+    <section id="workshop">
+      <div class="workshop-inner">
+        <div class="workshop-left reveal">
+          <div class="section-label" data-i18n="ws_label">Custom Workshop</div>
+          <h2 class="workshop-tagline">
+            <span data-i18n="ws_title1">If you can imagine it,</span><br />
+            <em data-i18n="ws_title2">we can build it.</em>
+          </h2>
+          <p class="workshop-body" data-i18n="ws_body">
+            Beyond our standard services, we work with
+            <strong>MDF, chipboard (sunta), solid wood, and laminate</strong> to
+            bring any custom design to life. Whether you want a minimalist
+            floating shelf unit or an intricately modified TV unit for your
+            living room — we design and build it from scratch, exactly to your
+            specifications.
+          </p>
+          <div class="workshop-materials">
+            <span class="mat-tag">MDF</span>
+            <span class="mat-tag" data-i18n="mat_solid">Solid Wood</span>
+            <span class="mat-tag" data-i18n="mat_chip">Chipboard</span>
+            <span class="mat-tag" data-i18n="mat_lam">Laminate</span>
+            <span class="mat-tag" data-i18n="mat_any">Any Material</span>
+          </div>
+          <a
+            href="https://wa.me/905315108948"
+            class="workshop-cta"
+            target="_blank"
+            data-i18n="ws_cta"
+          >
+            Describe your idea on WhatsApp →
+          </a>
+        </div>
+        <div class="workshop-right reveal">
+          <div class="workshop-item">
+            <div class="workshop-item-dot"></div>
+            <div>
+              <div class="workshop-item-title" data-i18n="wi1_title">
+                Living Room Units
+              </div>
+              <div class="workshop-item-desc" data-i18n="wi1_desc">
+                TV units, display shelves, console tables — minimal or ornate,
+                built to your room's exact dimensions and style.
+              </div>
+            </div>
+          </div>
+          <div class="workshop-item">
+            <div class="workshop-item-dot"></div>
+            <div>
+              <div class="workshop-item-title" data-i18n="wi2_title">
+                Bedroom Furniture
+              </div>
+              <div class="workshop-item-desc" data-i18n="wi2_desc">
+                Bed frames, nightstands, dressing tables, custom headboards —
+                fully bespoke to match your bedroom vision.
+              </div>
+            </div>
+          </div>
+          <div class="workshop-item">
+            <div class="workshop-item-dot"></div>
+            <div>
+              <div class="workshop-item-title" data-i18n="wi3_title">
+                Bathroom Cabinets
+              </div>
+              <div class="workshop-item-desc" data-i18n="wi3_desc">
+                Moisture-resistant bathroom vanities, mirror cabinets, and
+                storage units — built tough, looking great.
+              </div>
+            </div>
+          </div>
+          <div class="workshop-item">
+            <div class="workshop-item-dot"></div>
+            <div>
+              <div class="workshop-item-title" data-i18n="wi4_title">
+                Office & Shop Fit-outs
+              </div>
+              <div class="workshop-item-desc" data-i18n="wi4_desc">
+                Desks, shelving, reception counters and commercial interiors —
+                we outfit entire spaces from floor to ceiling.
+              </div>
+            </div>
+          </div>
+          <div class="workshop-item">
+            <div class="workshop-item-dot"></div>
+            <div>
+              <div class="workshop-item-title" data-i18n="wi5_title">
+                Decorative & Statement Pieces
+              </div>
+              <div class="workshop-item-desc" data-i18n="wi5_desc">
+                Unique wall panels, room dividers, floating shelves, alcove
+                fittings — your home's character, crafted in wood.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section id="features">
+      <div class="features-visual reveal">
+        <canvas class="features-canvas" id="featCanvas"></canvas>
+      </div>
+      <div class="reveal">
+        <div class="section-label" data-i18n="feat_label">Why Choose Us</div>
+        <h2 class="section-title">
+          <em data-i18n="feat_title1">Quality</em>
+          <span data-i18n="feat_title2">you can trust</span>
+        </h2>
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <div>
+              <div class="feature-title" data-i18n="feat1_title">
+                2+ Year Guarantee
+              </div>
+              <div class="feature-text" data-i18n="feat1_text">
+                Every piece we create comes with a minimum 2-year structural
+                guarantee. We stand by our craftsmanship — always.
+              </div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg>
+            </div>
+            <div>
+              <div class="feature-title" data-i18n="feat2_title">
+                Free Installation
+              </div>
+              <div class="feature-text" data-i18n="feat2_text">
+                We deliver and install everything at no extra cost. Your
+                furniture arrives ready to live in, not just look at.
+              </div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div>
+              <div class="feature-title" data-i18n="feat3_title">
+                Mon–Fri 9:00–17:00
+              </div>
+              <div class="feature-text" data-i18n="feat3_text">
+                Open weekdays 9am–5pm and weekends 12pm–5pm. Reach us anytime
+                via WhatsApp for a quick response.
+              </div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="12" y1="1" x2="12" y2="23" />
+                <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+              </svg>
+            </div>
+            <div>
+              <div class="feature-title" data-i18n="feat4_title">
+                USD &amp; EUR Payments
+              </div>
+              <div class="feature-text" data-i18n="feat4_text">
+                We accept payments in US Dollars and Euros — making it easy for
+                international clients to work with us seamlessly.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRICING NOTE ===== -->
+    <div class="pricing-note reveal">
+      <div class="pricing-text" data-i18n="pricing_text">
+        Payments accepted in <em>USD</em> and <em>EUR</em> only.
+      </div>
+      <div class="pricing-currencies">
+        <div class="currency-tag">$ USD</div>
+        <div class="currency-tag">€ EUR</div>
+      </div>
+    </div>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <div class="contact-info reveal">
+        <div class="section-label" data-i18n="contact_label">Find Us</div>
+        <h2 class="section-title" style="margin-bottom: 32px">
+          <em data-i18n="contact_title1">Get in</em>
+          <span data-i18n="contact_title2">Touch</span>
+        </h2>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg
+              viewBox="0 0 24 24"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-title" data-i18n="contact_addr_label">
+              Address
+            </div>
+            <div class="contact-item-value">
+              Yunus, Demokrasi Cd. No:44,<br />34873 Kartal / Istanbul
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg
+              viewBox="0 0 24 24"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"
+              />
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-title" data-i18n="contact_phone_label">
+              Phone &amp; WhatsApp
+            </div>
+            <div class="contact-item-value">
+              <a href="tel:+905315108948">+90 531 510 8948</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg
+              viewBox="0 0 24 24"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-title" data-i18n="contact_email_label">
+              Email
+            </div>
+            <div class="contact-item-value">
+              <a href="mailto:mehmetcem321@gmail.com">mehmetcem321@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg
+              viewBox="0 0 24 24"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-title" data-i18n="contact_hours_label">
+              Working Hours
+            </div>
+            <div class="contact-item-value" data-i18n="contact_hours_val">
+              Mon–Fri: 09:00 – 17:00<br />
+              Sat–Sun: 12:00 – 17:00
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/905315108948" class="cta-wa" target="_blank">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            />
+          </svg>
+          <span data-i18n="cta_whatsapp">Write on WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="map-container reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3015.7!2d29.21409!3d40.89019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDUzJzI0LjciTiAyOcKwMTInNTAuNyJF!5e0!3m2!1sen!2str!4v1"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Kartal Mobilya Location"
+        >
+        </iframe>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div class="footer-logo">Kartal <span>Mobilya</span></div>
+      <div class="footer-links">
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+      </div>
+      <div class="footer-copy">© 2024 Kartal Mobilya. Istanbul.</div>
+    </footer>
+
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script>
+      // ========== TRANSLATIONS ==========
+      const translations = {
+        en: {
+          nav_about: "About",
+          nav_services: "Services",
+          nav_contact: "Contact",
+          nav_whatsapp: "WhatsApp",
+          hero_label: "Est. 2009 · Istanbul",
+          hero_title1: "Handcrafted with",
+          hero_title2: "Passion & Precision",
+          hero_desc:
+            "Over 15 years of bespoke wooden furniture and carpentry in Istanbul. Every project is a signature, every client becomes family.",
+          cta_whatsapp: "Write on WhatsApp",
+          cta_contact: "Contact Us",
+          badge1: "Free Installation",
+          badge2: "2+ Year Warranty",
+          badge3: "Custom Design",
+          hero_quote:
+            '"Every piece of wood has a story — we help it tell yours."',
+          about_label: "Our Story",
+          about_title1: "15+ Years of",
+          about_title2: "Masterful Craft",
+          about_desc:
+            "Based in Kartal, Istanbul, we have been crafting handmade wooden furniture and delivering carpentry services for over 15 years. Each piece is built with care, experience, and respect for the natural beauty of wood.",
+          stat1: "Years Experience",
+          stat2: "Projects Done",
+          stat3: "Guarantee",
+          services_label: "What We Create",
+          services_title1: "Our",
+          services_title2: "Services",
+          services_cta: "Get a Quote →",
+          svc1_name: "Kitchen Cabinet",
+          svc1_desc:
+            "Custom-built kitchen cabinets designed to maximise your space and match your aesthetic perfectly.",
+          svc2_name: "Wardrobe",
+          svc2_desc:
+            "Bespoke wardrobes and storage solutions crafted to fit any room size, style, and personal need.",
+          svc3_name: "Custom Furniture",
+          svc3_desc:
+            "From concept to creation — bespoke furniture pieces designed exclusively for your space and taste.",
+          svc4_name: "Dining Table",
+          svc4_desc:
+            "Solid wood dining tables crafted for longevity, beauty, and the warmth of family gatherings.",
+          svc5_name: "Coffee Table",
+          svc5_desc:
+            "Elegant coffee and side tables — the centrepiece of your living room, made to impress.",
+          svc6_name: "Renovation & Repair",
+          svc6_desc:
+            "Breathe new life into your existing furniture — expert restoration and renovation with original craftsmanship.",
+          feat_label: "Why Choose Us",
+          feat_title1: "Quality",
+          feat_title2: "you can trust",
+          feat1_title: "2+ Year Guarantee",
+          feat1_text:
+            "Every piece we create comes with a minimum 2-year structural guarantee. We stand by our craftsmanship — always.",
+          feat2_title: "Free Installation",
+          feat2_text:
+            "We deliver and install everything at no extra cost. Your furniture arrives ready to live in, not just look at.",
+          feat3_title: "Mon–Fri 9:00–17:00",
+          feat3_text:
+            "Open weekdays 9am–5pm and weekends 12pm–5pm. Reach us anytime via WhatsApp for a quick response.",
+          feat4_title: "USD & EUR Payments",
+          feat4_text:
+            "We accept payments in US Dollars and Euros — making it easy for international clients to work with us seamlessly.",
+          pricing_text:
+            "Payments accepted in <em>USD</em> and <em>EUR</em> only.",
+          contact_label: "Find Us",
+          contact_title1: "Get in",
+          contact_title2: "Touch",
+          contact_addr_label: "Address",
+          contact_phone_label: "Phone & WhatsApp",
+          contact_email_label: "Email",
+          contact_hours_label: "Working Hours",
+          contact_hours_val: "Mon–Fri: 09:00 – 17:00<br>Sat–Sun: 12:00 – 17:00",
+          ws_label: "Custom Workshop",
+          ws_title1: "If you can imagine it,",
+          ws_title2: "we can build it.",
+          ws_body:
+            "Beyond our standard services, we work with <strong>MDF, chipboard (sunta), solid wood, and laminate</strong> to bring any custom design to life. Whether you want a minimalist floating shelf unit or an intricately modified TV unit for your living room — we design and build it from scratch, exactly to your specifications.",
+          mat_solid: "Solid Wood",
+          mat_chip: "Chipboard",
+          mat_lam: "Laminate",
+          mat_any: "Any Material",
+          ws_cta: "Describe your idea on WhatsApp →",
+          wi1_title: "Living Room Units",
+          wi1_desc:
+            "TV units, display shelves, console tables — minimal or ornate, built to your room's exact dimensions and style.",
+          wi2_title: "Bedroom Furniture",
+          wi2_desc:
+            "Bed frames, nightstands, dressing tables, custom headboards — fully bespoke to match your bedroom vision.",
+          wi3_title: "Bathroom Cabinets",
+          wi3_desc:
+            "Moisture-resistant bathroom vanities, mirror cabinets, and storage units — built tough, looking great.",
+          wi4_title: "Office & Shop Fit-outs",
+          wi4_desc:
+            "Desks, shelving, reception counters and commercial interiors — we outfit entire spaces from floor to ceiling.",
+          wi5_title: "Decorative & Statement Pieces",
+          wi5_desc:
+            "Unique wall panels, room dividers, floating shelves, alcove fittings — your home's character, crafted in wood.",
+        },
+        tr: {
+          nav_about: "Hakkında",
+          nav_services: "Hizmetler",
+          nav_contact: "İletişim",
+          nav_whatsapp: "WhatsApp",
+          hero_label: "Kur. 2009 · İstanbul",
+          hero_title1: "El Yapımı ile",
+          hero_title2: "Tutku & Hassasiyet",
+          hero_desc:
+            "İstanbul'da 15 yılı aşkın süredir özel ahşap mobilya ve marangozluk hizmetleri sunuyoruz. Her proje bir imza, her müşteri bir aile.",
+          cta_whatsapp: "WhatsApp'tan Yazın",
+          cta_contact: "Bize Ulaşın",
+          badge1: "Ücretsiz Montaj",
+          badge2: "2+ Yıl Garanti",
+          badge3: "Özel Tasarım",
+          hero_quote:
+            '"Her ahşap parçasının bir hikayesi var — biz sizinkini anlatmanıza yardım ediyoruz."',
+          about_label: "Hikayemiz",
+          about_title1: "15+ Yıllık",
+          about_title2: "Usta İşçilik",
+          about_desc:
+            "Kartal, İstanbul'da bulunan atölyemizde 15 yılı aşkın süredir el yapımı ahşap mobilya üretimi ve marangozluk hizmetleri sunuyoruz. Her parça özenle, deneyimle ve ahşabın doğal güzelliğine saygıyla inşa edilmektedir.",
+          stat1: "Yıl Deneyim",
+          stat2: "Tamamlanan Proje",
+          stat3: "Garanti",
+          services_label: "Neler Üretiyoruz",
+          services_title1: "",
+          services_title2: "Hizmetlerimiz",
+          services_cta: "Teklif Al →",
+          svc1_name: "Mutfak Dolabı",
+          svc1_desc:
+            "Alanınızı en verimli şekilde kullanan ve estetiğinize mükemmel uyan özel yapım mutfak dolapları.",
+          svc2_name: "Gardırop",
+          svc2_desc:
+            "Her oda boyutuna, stile ve kişisel ihtiyaca göre tasarlanmış özel gardırop ve depolama çözümleri.",
+          svc3_name: "Özel Mobilya",
+          svc3_desc:
+            "Fikirden üretime — alanınız ve zevkiniz için özel olarak tasarlanan mobilyalar.",
+          svc4_name: "Yemek Masası",
+          svc4_desc:
+            "Aile yemeklerinin sıcaklığına layık, sağlam ve uzun ömürlü masif ahşap yemek masaları.",
+          svc5_name: "Sehpa & Orta Sehpa",
+          svc5_desc:
+            "Oturma odanızın odak noktası olan şık sehpa ve orta sehpalar.",
+          svc6_name: "Tadilat & Tamir",
+          svc6_desc:
+            "Mevcut mobilyalarınıza yeni bir hayat verin — uzman restorasyon ve tamir hizmetleri.",
+          feat_label: "Neden Biz",
+          feat_title1: "Güvenilir",
+          feat_title2: "Kalite",
+          feat1_title: "2+ Yıl Garanti",
+          feat1_text:
+            "Ürettiğimiz her parça minimum 2 yıl yapısal garanti ile teslim edilir. Ustalığımızın arkındayız — her zaman.",
+          feat2_title: "Ücretsiz Montaj",
+          feat2_text:
+            "Her şeyi ek ücret almadan teslim edip monte ediyoruz. Mobilyanız kullanıma hazır olarak gelir.",
+          feat3_title: "Pzt–Cum 9:00–17:00",
+          feat3_text:
+            "Hafta içi 9:00-17:00, hafta sonu 12:00-17:00 açığız. WhatsApp'tan hızlı yanıt için ulaşabilirsiniz.",
+          feat4_title: "USD & EUR Ödeme",
+          feat4_text: "Ödeme olarak ABD Doları ve Euro kabul ediyoruz.",
+          pricing_text:
+            "Ödemeler yalnızca <em>USD</em> ve <em>EUR</em> üzerinden alınmaktadır.",
+          contact_label: "Bizi Bulun",
+          contact_title1: "İletişime",
+          contact_title2: "Geçin",
+          contact_addr_label: "Adres",
+          contact_phone_label: "Telefon & WhatsApp",
+          contact_email_label: "E-posta",
+          contact_hours_label: "Çalışma Saatleri",
+          contact_hours_val: "Pzt–Cum: 09:00 – 17:00<br>Cmt–Paz: 12:00 – 17:00",
+          ws_label: "Özel Atölye",
+          ws_title1: "Hayal edebiliyorsanız,",
+          ws_title2: "biz yapabiliriz.",
+          ws_body:
+            "Standart hizmetlerimizin ötesinde, <strong>MDF, sunta, masif ahşap ve laminat</strong> gibi malzemelerle her türlü özel tasarımı hayata geçiriyoruz. Sade bir yüzer raf ünitesinden salonunuz için modifiyeli bir TV ünitesine kadar — sıfırdan, tam istediğiniz gibi tasarlayıp üretiyoruz.",
+          mat_solid: "Masif Ahşap",
+          mat_chip: "Sunta",
+          mat_lam: "Laminat",
+          mat_any: "Her Malzeme",
+          ws_cta: "Fikrinizi WhatsApp'tan anlatın →",
+          wi1_title: "Salon Mobilyaları",
+          wi1_desc:
+            "TV üniteleri, kitaplıklar, konsol masalar — sade ya da detaylı, odanızın tam ölçülerine göre üretilir.",
+          wi2_title: "Yatak Odası Mobilyaları",
+          wi2_desc:
+            "Karyola, komodin, makyaj masası, özel başlıklar — yatak odanızın vizyonuna göre tamamen özel.",
+          wi3_title: "Banyo Dolabı",
+          wi3_desc:
+            "Neme dayanıklı banyo tezgahları, aynalı dolaplar ve depolama üniteleri — sağlam ve şık.",
+          wi4_title: "Ofis & Dükkan Tasarımı",
+          wi4_desc:
+            "Çalışma masaları, raflar, resepsiyon tezgahları ve ticari iç mekan düzenlemeleri.",
+          wi5_title: "Dekoratif Parçalar",
+          wi5_desc:
+            "Duvar panelleri, oda bölücüler, yüzer raflar, niş yerleştirmeleri — evinizin karakteri, ahşapla şekillendirilmiş.",
+        },
+        ar: {
+          nav_about: "عنّا",
+          nav_services: "خدماتنا",
+          nav_contact: "اتصل بنا",
+          nav_whatsapp: "واتساب",
+          hero_label: "تأسس 2009 · إسطنبول",
+          hero_title1: "مصنوع بـ",
+          hero_title2: "شغف ودقة",
+          hero_desc:
+            "أكثر من 15 عامًا في صناعة الأثاث الخشبي المخصص ونجارة فائقة الجودة في إسطنبول. كل مشروع توقيع، وكل عميل جزء من العائلة.",
+          cta_whatsapp: "راسلنا عبر واتساب",
+          cta_contact: "تواصل معنا",
+          badge1: "تركيب مجاني",
+          badge2: "ضمان سنتان+",
+          badge3: "تصميم مخصص",
+          hero_quote: '"كل قطعة خشب لها قصة — نحن نساعدك لتحكيها."',
+          about_label: "قصتنا",
+          about_title1: "أكثر من 15 عامًا من",
+          about_title2: "الحرفية الرفيعة",
+          about_desc:
+            "نصنع الأثاث الخشبي اليدوي من كارتال، إسطنبول منذ أكثر من 15 عامًا. كل قطعة تُبنى بعناية وخبرة واحترام للجمال الطبيعي للخشب.",
+          stat1: "سنوات خبرة",
+          stat2: "مشروع منجز",
+          stat3: "ضمان",
+          services_label: "ما نصنع",
+          services_title1: "",
+          services_title2: "خدماتنا",
+          services_cta: "احصل على عرض سعر ←",
+          svc1_name: "خزانة مطبخ",
+          svc1_desc: "خزائن مطبخ مخصصة لتستفيد من مساحتك وتناسب ذوقك الجمالي.",
+          svc2_name: "خزانة ملابس",
+          svc2_desc:
+            "خزائن ملابس وحلول تخزين مصنوعة حسب الطلب لأي غرفة وأي ذوق.",
+          svc3_name: "أثاث مخصص",
+          svc3_desc:
+            "من الفكرة إلى التنفيذ — قطع أثاث حصرية مصممة لمساحتك وذوقك.",
+          svc4_name: "طاولة طعام",
+          svc4_desc:
+            "طاولات طعام من الخشب الصلب تجمع بين المتانة والجمال ودفء لقاءات الأسرة.",
+          svc5_name: "طاولة القهوة",
+          svc5_desc: "طاولات قهوة وجانبية أنيقة — محور غرفة معيشتك.",
+          svc6_name: "ترميم وإصلاح",
+          svc6_desc:
+            "امنح أثاثك حياة جديدة — ترميم وإصلاح احترافي بأيدي حرفيين ماهرين.",
+          feat_label: "لماذا نحن",
+          feat_title1: "جودة",
+          feat_title2: "يمكنك الوثوق بها",
+          feat1_title: "ضمان سنتين+",
+          feat1_text:
+            "كل قطعة نصنعها تأتي بضمان هيكلي لا يقل عن سنتين. نقف خلف حرفيتنا دائمًا.",
+          feat2_title: "تركيب مجاني",
+          feat2_text:
+            "نوصّل ونركب كل شيء دون أي تكلفة إضافية. أثاثك يصل جاهزًا للاستخدام.",
+          feat3_title: "الاثنين–الجمعة 9:00–17:00",
+          feat3_text: "مفتوحون أيام الأسبوع 9ص–5م وعطلة نهاية الأسبوع 12م–5م.",
+          feat4_title: "دفع بالدولار واليورو",
+          feat4_text: "نقبل المدفوعات بالدولار الأمريكي واليورو فقط.",
+          pricing_text: "المدفوعات مقبولة بـ <em>USD</em> و <em>EUR</em> فقط.",
+          contact_label: "أين نحن",
+          contact_title1: "تواصل",
+          contact_title2: "معنا",
+          contact_addr_label: "العنوان",
+          contact_phone_label: "الهاتف وواتساب",
+          contact_email_label: "البريد الإلكتروني",
+          contact_hours_label: "ساعات العمل",
+          contact_hours_val:
+            "الاثنين–الجمعة: 09:00 – 17:00<br>السبت–الأحد: 12:00 – 17:00",
+          ws_label: "الورشة المخصصة",
+          ws_title1: "إذا تخيّلته،",
+          ws_title2: "نحن نبنيه.",
+          ws_body:
+            "بجانب خدماتنا الأساسية، نعمل مع <strong>MDF والخشب الحبيبي والخشب الصلب والبلاستيك الرقائقي</strong> لتنفيذ أي تصميم مخصص. من وحدات الرفوف العائمة البسيطة إلى وحدات التلفاز المزخرفة لغرفة المعيشة — نصمم وننفذ من الصفر حسب مواصفاتك تمامًا.",
+          mat_solid: "خشب صلب",
+          mat_chip: "خشب حبيبي",
+          mat_lam: "رقائق لاميناتية",
+          mat_any: "أي مادة",
+          ws_cta: "صِف فكرتك على واتساب ←",
+          wi1_title: "وحدات غرفة المعيشة",
+          wi1_desc:
+            "وحدات تلفاز، رفوف عرض، طاولات كونسول — بسيطة أو مزخرفة، بأبعاد غرفتك الدقيقة.",
+          wi2_title: "أثاث غرفة النوم",
+          wi2_desc:
+            "أسرّة، طاولات سرير، طاولات حلاقة، رؤوس سرير مخصصة — تصميم كامل حسب رؤيتك.",
+          wi3_title: "خزائن الحمام",
+          wi3_desc:
+            "خزائن حمام مقاومة للرطوبة، خزائن مرايا ووحدات تخزين — متينة ورائعة المظهر.",
+          wi4_title: "تجهيز المكاتب والمحلات",
+          wi4_desc:
+            "مكاتب، رفوف، طاولات استقبال وتصميم داخلي تجاري — نجهز المساحات بالكامل.",
+          wi5_title: "قطع ديكورية مميزة",
+          wi5_desc:
+            "لوحات جدارية، فواصل غرف، رفوف عائمة، تركيبات خاصة — شخصية منزلك، منحوتة في الخشب.",
+        },
+        ru: {
+          nav_about: "О нас",
+          nav_services: "Услуги",
+          nav_contact: "Контакты",
+          nav_whatsapp: "WhatsApp",
+          hero_label: "Осн. 2009 · Стамбул",
+          hero_title1: "Создано с",
+          hero_title2: "Страстью и мастерством",
+          hero_desc:
+            "Более 15 лет изготовления изделий из дерева на заказ и столярных услуг в Стамбуле. Каждый проект — подпись мастера, каждый клиент — часть семьи.",
+          cta_whatsapp: "Написать в WhatsApp",
+          cta_contact: "Связаться с нами",
+          badge1: "Бесплатная установка",
+          badge2: "Гарантия 2+ года",
+          badge3: "Индивидуальный дизайн",
+          hero_quote:
+            '"Каждое дерево хранит историю — мы помогаем рассказать вашу."',
+          about_label: "Наша история",
+          about_title1: "15+ лет",
+          about_title2: "Мастерства",
+          about_desc:
+            "Мы находимся в районе Картал, Стамбул, и более 15 лет создаём мебель ручной работы из дерева и оказываем столярные услуги. Каждое изделие создаётся с заботой и уважением к природной красоте дерева.",
+          stat1: "Лет опыта",
+          stat2: "Проектов",
+          stat3: "Гарантия",
+          services_label: "Что мы создаём",
+          services_title1: "Наши",
+          services_title2: "Услуги",
+          services_cta: "Получить предложение →",
+          svc1_name: "Кухонный шкаф",
+          svc1_desc:
+            "Кухонные шкафы на заказ, идеально использующие пространство и соответствующие вашей эстетике.",
+          svc2_name: "Шкаф-купе",
+          svc2_desc:
+            "Гардеробы и системы хранения под любой размер комнаты, стиль и потребности.",
+          svc3_name: "Мебель на заказ",
+          svc3_desc:
+            "От идеи до воплощения — эксклюзивные предметы мебели для вашего пространства.",
+          svc4_name: "Обеденный стол",
+          svc4_desc:
+            "Массивные деревянные обеденные столы для семейных вечеров — долговечные и красивые.",
+          svc5_name: "Журнальный столик",
+          svc5_desc:
+            "Элегантные журнальные и приставные столики — центр вашей гостиной.",
+          svc6_name: "Ремонт и реставрация",
+          svc6_desc:
+            "Подарите мебели новую жизнь — профессиональная реставрация и ремонт.",
+          feat_label: "Почему мы",
+          feat_title1: "Качество",
+          feat_title2: "которому доверяют",
+          feat1_title: "Гарантия 2+ года",
+          feat1_text:
+            "Каждое изделие поставляется с минимальной структурной гарантией 2 года.",
+          feat2_title: "Бесплатная установка",
+          feat2_text:
+            "Доставляем и устанавливаем всё бесплатно. Ваша мебель готова к жизни с первого дня.",
+          feat3_title: "Пн–Пт 9:00–17:00",
+          feat3_text:
+            "Работаем в будни с 9:00 до 17:00, в выходные — с 12:00 до 17:00.",
+          feat4_title: "Оплата в USD и EUR",
+          feat4_text:
+            "Принимаем оплату в долларах США и евро для удобства международных клиентов.",
+          pricing_text:
+            "Оплата принимается только в <em>USD</em> и <em>EUR</em>.",
+          contact_label: "Найдите нас",
+          contact_title1: "Свяжитесь",
+          contact_title2: "с нами",
+          contact_addr_label: "Адрес",
+          contact_phone_label: "Телефон и WhatsApp",
+          contact_email_label: "Email",
+          contact_hours_label: "Рабочие часы",
+          contact_hours_val: "Пн–Пт: 09:00 – 17:00<br>Сб–Вс: 12:00 – 17:00",
+          ws_label: "Мастерская на заказ",
+          ws_title1: "Если вы это представили —",
+          ws_title2: "мы это построим.",
+          ws_body:
+            "Помимо стандартных услуг, мы работаем с <strong>МДФ, ДСП, массивом дерева и ламинатом</strong>, воплощая любой дизайн в жизнь. Минималистичная полка с парением в воздухе или модифицированная ТВ-тумба для гостиной — мы создаём с нуля точно по вашим пожеланиям.",
+          mat_solid: "Массив дерева",
+          mat_chip: "ДСП",
+          mat_lam: "Ламинат",
+          mat_any: "Любой материал",
+          ws_cta: "Опишите идею в WhatsApp →",
+          wi1_title: "Мебель для гостиной",
+          wi1_desc:
+            "ТВ-тумбы, стеллажи, консольные столы — минималистичные или с декором, по точным размерам вашей комнаты.",
+          wi2_title: "Мебель для спальни",
+          wi2_desc:
+            "Кровати, тумбочки, туалетные столики, изголовья — полностью под ваш вкус.",
+          wi3_title: "Шкафы для ванной",
+          wi3_desc:
+            "Влагостойкие тумбы, зеркальные шкафы и системы хранения — прочно и красиво.",
+          wi4_title: "Офисы и магазины",
+          wi4_desc:
+            "Столы, стеллажи, стойки ресепшена и коммерческий интерьер — оснащаем пространства полностью.",
+          wi5_title: "Декоративные элементы",
+          wi5_desc:
+            "Настенные панели, перегородки, парящие полки, встроенные ниши — характер вашего дома в дереве.",
+        },
+      };
+
+      let currentLang = "en";
+
+      function setLang(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.dataset.i18n;
+          if (t[key] !== undefined) el.innerHTML = t[key];
+        });
+
+        document.getElementById("currentLang").textContent = lang.toUpperCase();
+        document.querySelectorAll(".lang-dropdown button").forEach((b) => {
+          b.classList.toggle("active", b.dataset.l === lang);
+        });
+        document.querySelectorAll(".mobile-menu-langs button").forEach((b) => {
+          b.classList.toggle("active", b.dataset.ml === lang);
+        });
+
+        document.getElementById("langDropdown").classList.remove("open");
+      }
+
+      // Lang toggle
+      document.getElementById("langBtn").addEventListener("click", (e) => {
+        e.stopPropagation();
+        document.getElementById("langDropdown").classList.toggle("open");
+      });
+      document.addEventListener("click", () => {
+        document.getElementById("langDropdown").classList.remove("open");
+      });
+
+      // Hamburger
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        mobileMenu.classList.toggle("open");
+      });
+      function closeMobile() {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("open");
+      }
+
+      // Navbar scroll
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 40);
+      });
+
+      // Custom cursor
+      const cursor = document.getElementById("cursor");
+      const cursorRing = document.getElementById("cursorRing");
+      let mx = -200,
+        my = -200,
+        rx = -200,
+        ry = -200;
+      cursor.style.opacity = "0";
+      cursorRing.style.opacity = "0";
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cursor.style.opacity = "1";
+        cursorRing.style.opacity = "1";
+      });
+      function animateCursor() {
+        cursor.style.left = mx + "px";
+        cursor.style.top = my + "px";
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        cursorRing.style.left = rx + "px";
+        cursorRing.style.top = ry + "px";
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+      document.querySelectorAll("a, button").forEach((el) => {
+        el.addEventListener("mouseenter", () =>
+          cursorRing.classList.add("hovered"),
+        );
+        el.addEventListener("mouseleave", () =>
+          cursorRing.classList.remove("hovered"),
+        );
+      });
+
+      // ===== INTRO CANVAS: Wood grain lines =====
+      (function () {
+        const canvas = document.getElementById("introCanvas");
+        const ctx = canvas.getContext("2d");
+        function resize() {
+          canvas.width = canvas.offsetWidth;
+          canvas.height = canvas.offsetHeight;
+        }
+        resize();
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          const t = Date.now() * 0.0003;
+          for (let i = 0; i < 18; i++) {
+            const y = (canvas.height / 18) * i + Math.sin(t + i * 0.7) * 12;
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            for (let x = 0; x < canvas.width; x += 8) {
+              ctx.lineTo(x, y + Math.sin(x * 0.015 + t + i) * 6);
+            }
+            ctx.strokeStyle = `rgba(200,169,110,${0.08 + Math.sin(t + i * 0.4) * 0.03})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+          requestAnimationFrame(draw);
+        }
+        draw();
+      })();
+
+      // ===== HERO CANVAS: Animated wood grain + chisel marks =====
+      (function () {
+        const canvas = document.getElementById("heroCanvas");
+        const ctx = canvas.getContext("2d");
+        function resize() {
+          canvas.width = canvas.offsetWidth;
+          canvas.height = canvas.offsetHeight;
+        }
+        resize();
+        window.addEventListener("resize", resize);
+
+        const grains = Array.from({ length: 24 }, (_, i) => ({
+          y: Math.random() * 1.2,
+          speed: 0.00008 + Math.random() * 0.00005,
+          amp: 6 + Math.random() * 14,
+          freq: 0.008 + Math.random() * 0.012,
+          phase: Math.random() * Math.PI * 2,
+          alpha: 0.06 + Math.random() * 0.08,
+        }));
+
+        const rings = Array.from({ length: 6 }, (_, i) => ({
+          rx: 0.35 + i * 0.12,
+          ry: 0.3 + Math.random() * 0.4,
+          w: 60 + i * 55,
+          h: 35 + i * 30,
+          alpha: 0.04 + i * 0.01,
+        }));
+
+        function draw() {
+          const W = canvas.width,
+            H = canvas.height;
+          ctx.clearRect(0, 0, W, H);
+          const t = Date.now();
+
+          // Background gradient
+          const bg = ctx.createLinearGradient(0, 0, W, H);
+          bg.addColorStop(0, "#1C1916");
+          bg.addColorStop(1, "#2A2218");
+          ctx.fillStyle = bg;
+          ctx.fillRect(0, 0, W, H);
+
+          // Wood rings
+          rings.forEach((r) => {
+            ctx.beginPath();
+            ctx.ellipse(W * r.rx, H * r.ry, r.w, r.h, 0.3, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(200,169,110,${r.alpha})`;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+          });
+
+          // Grain lines
+          grains.forEach((g, i) => {
+            const yBase = H * (g.y + Math.sin(t * g.speed + g.phase) * 0.04);
+            ctx.beginPath();
+            ctx.moveTo(0, yBase);
+            for (let x = 0; x < W; x += 6) {
+              ctx.lineTo(
+                x,
+                yBase +
+                  Math.sin(x * g.freq + t * g.speed * 3 + g.phase) * g.amp,
+              );
+            }
+            ctx.strokeStyle = `rgba(180,145,80,${g.alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          });
+
+          // Chisel mark details
+          for (let i = 0; i < 8; i++) {
+            const x = W * (0.1 + i * 0.11);
+            const y = H * 0.55 + Math.sin(i * 1.7) * H * 0.1;
+            ctx.beginPath();
+            ctx.moveTo(x, y - 20);
+            ctx.lineTo(x + 2, y + 20);
+            ctx.strokeStyle = "rgba(200,169,110,0.06)";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          }
+
+          requestAnimationFrame(draw);
+        }
+        draw();
+      })();
+
+      // ===== ABOUT CANVAS =====
+      (function () {
+        const canvas = document.getElementById("aboutCanvas");
+        const ctx = canvas.getContext("2d");
+        function resize() {
+          canvas.width = canvas.offsetWidth;
+          canvas.height = canvas.offsetHeight;
+        }
+        resize();
+        window.addEventListener("resize", resize);
+
+        function draw() {
+          const W = canvas.width,
+            H = canvas.height;
+          ctx.clearRect(0, 0, W, H);
+          const t = Date.now() * 0.0002;
+
+          const bg = ctx.createLinearGradient(0, 0, W, H);
+          bg.addColorStop(0, "#3D2B1A");
+          bg.addColorStop(1, "#5C3D20");
+          ctx.fillStyle = bg;
+          ctx.fillRect(0, 0, W, H);
+
+          // Grain
+          for (let i = 0; i < 16; i++) {
+            const y = H * (i / 16) + Math.sin(t + i) * 8;
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            for (let x = 0; x < W; x += 5) {
+              ctx.lineTo(x, y + Math.sin(x * 0.02 + t + i * 0.5) * 7);
+            }
+            ctx.strokeStyle = `rgba(220,180,110,${0.05 + Math.sin(t + i) * 0.02})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          // Concentric wood rings
+          for (let i = 0; i < 8; i++) {
+            ctx.beginPath();
+            ctx.ellipse(
+              W * 0.5,
+              H * 0.5,
+              W * 0.15 + i * W * 0.06,
+              H * 0.1 + i * H * 0.06,
+              0.2,
+              0,
+              Math.PI * 2,
+            );
+            ctx.strokeStyle = `rgba(200,160,80,${0.08 - i * 0.007})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          // Compass / ruler mark
+          ctx.save();
+          ctx.translate(W * 0.72, H * 0.22);
+          ctx.rotate(0.3);
+          ctx.beginPath();
+          ctx.moveTo(-30, 0);
+          ctx.lineTo(30, 0);
+          ctx.moveTo(0, -30);
+          ctx.lineTo(0, 30);
+          ctx.strokeStyle = "rgba(200,169,110,0.18)";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.restore();
+
+          // Text watermark
+          ctx.save();
+          ctx.font = `${W * 0.12}px "Cormorant Garamond", serif`;
+          ctx.fillStyle = "rgba(255,255,255,0.04)";
+          ctx.textAlign = "center";
+          ctx.fillText("KARTAL", W / 2, H * 0.56);
+          ctx.restore();
+
+          requestAnimationFrame(draw);
+        }
+        draw();
+      })();
+
+      // ===== FEATURES CANVAS =====
+      (function () {
+        const canvas = document.getElementById("featCanvas");
+        const ctx = canvas.getContext("2d");
+        function resize() {
+          canvas.width = canvas.offsetWidth;
+          canvas.height = canvas.offsetHeight;
+        }
+        resize();
+        window.addEventListener("resize", resize);
+
+        function draw() {
+          const W = canvas.width,
+            H = canvas.height;
+          ctx.clearRect(0, 0, W, H);
+          const t = Date.now() * 0.00015;
+
+          const bg = ctx.createLinearGradient(0, H, W, 0);
+          bg.addColorStop(0, "#1C1916");
+          bg.addColorStop(0.5, "#2E1F0E");
+          bg.addColorStop(1, "#4A2E10");
+          ctx.fillStyle = bg;
+          ctx.fillRect(0, 0, W, H);
+
+          // Floating geometric shapes (ruler marks)
+          for (let i = 0; i < 5; i++) {
+            const x = W * (0.1 + i * 0.2);
+            const y = H * 0.3 + Math.sin(t + i * 1.3) * H * 0.07;
+            ctx.beginPath();
+            ctx.rect(x - 2, y - 24, 4, 48);
+            ctx.fillStyle = `rgba(200,169,110,${0.06 + Math.sin(t + i) * 0.02})`;
+            ctx.fill();
+          }
+
+          // Grain
+          for (let i = 0; i < 20; i++) {
+            const yB = H * (i / 20);
+            ctx.beginPath();
+            ctx.moveTo(0, yB);
+            for (let x = 0; x < W; x += 6) {
+              ctx.lineTo(x, yB + Math.sin(x * 0.014 + t * 2 + i * 0.8) * 8);
+            }
+            ctx.strokeStyle = `rgba(150,110,50,${0.055})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+
+          // Big dovetail joint silhouette
+          ctx.save();
+          ctx.translate(W * 0.5, H * 0.5);
+          const s = Math.min(W, H) * 0.25;
+          ctx.beginPath();
+          ctx.moveTo(-s, -s * 0.3);
+          ctx.lineTo(-s * 0.3, -s * 0.3);
+          ctx.lineTo(-s * 0.15, -s * 0.5);
+          ctx.lineTo(s * 0.15, -s * 0.5);
+          ctx.lineTo(s * 0.3, -s * 0.3);
+          ctx.lineTo(s, -s * 0.3);
+          ctx.lineTo(s, s * 0.3);
+          ctx.lineTo(s * 0.3, s * 0.3);
+          ctx.lineTo(s * 0.15, s * 0.5);
+          ctx.lineTo(-s * 0.15, s * 0.5);
+          ctx.lineTo(-s * 0.3, s * 0.3);
+          ctx.lineTo(-s, s * 0.3);
+          ctx.closePath();
+          ctx.strokeStyle = "rgba(200,169,110,0.12)";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+          ctx.restore();
+
+          requestAnimationFrame(draw);
+        }
+        draw();
+      })();
+
+      // ===== SCROLL REVEAL =====
+      const revealEls = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.12 },
+      );
+      revealEls.forEach((el) => observer.observe(el));
+
+      // ===== INTRO DISMISS =====
+      setTimeout(() => {
+        const intro = document.getElementById("intro");
+        if (intro) {
+          intro.classList.add("done");
+          setTimeout(() => {
+            intro.remove();
+          }, 900);
+        }
+      }, 3000);
+    </script>
+  </body>
+</html>
